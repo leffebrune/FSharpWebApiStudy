@@ -37,13 +37,18 @@ module Program =
         app.UseAuthorization()
         app.MapControllers()
 
-        let fileProvider = new PhysicalFileProvider(builder.Environment.WebRootPath);
+        let fileProvider = new PhysicalFileProvider(Path.Combine(builder.Environment.WebRootPath, "controllers"));
+        let requestPath = "/controllers";
         app.UseStaticFiles(new StaticFileOptions(
-            FileProvider = fileProvider
+            FileProvider = fileProvider,
+            RequestPath = requestPath,
+            ServeUnknownFileTypes = true
+
         ));
 
         app.UseDirectoryBrowser(new DirectoryBrowserOptions(
-            FileProvider = fileProvider
+            FileProvider = fileProvider,
+            RequestPath = requestPath
         ));
 
 
