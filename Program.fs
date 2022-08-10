@@ -23,9 +23,7 @@ module Program =
     [<EntryPoint>]
     let main args =
 
-        let option = new WebApplicationOptions(Args = args, WebRootPath = "public")
-        
-        let builder = WebApplication.CreateBuilder(option)
+        let builder = WebApplication.CreateBuilder(args)
 
         builder.Services.AddControllers()
         builder.Services.AddDirectoryBrowser()
