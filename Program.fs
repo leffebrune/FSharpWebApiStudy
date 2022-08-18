@@ -26,7 +26,6 @@ module Program =
         let builder = WebApplication.CreateBuilder(args)
 
         builder.Services.AddControllers()
-        builder.Services.AddDirectoryBrowser()
 
         let app = builder.Build()
 
@@ -35,21 +34,20 @@ module Program =
         app.UseAuthorization()
         app.MapControllers()
 
-        let fileProvider = new PhysicalFileProvider(Path.Combine(builder.Environment.WebRootPath, "controllers"));
-        let requestPath = "/controllers";
-        app.UseStaticFiles(new StaticFileOptions(
-            FileProvider = fileProvider,
-            RequestPath = requestPath,
-            ServeUnknownFileTypes = true
+        //let fileProvider = new PhysicalFileProvider(Path.Combine(builder.Environment.WebRootPath, "controllers"));
+        //let requestPath = "/controllers";
+        //app.UseStaticFiles(new StaticFileOptions(
+        //    FileProvider = fileProvider,
+        //    RequestPath = requestPath,
+        //    ServeUnknownFileTypes = true
 
-        ));
+        //));
 
-        app.UseDirectoryBrowser(new DirectoryBrowserOptions(
-            FileProvider = fileProvider,
-            RequestPath = requestPath
-        ));
-
+        //app.UseDirectoryBrowser(new DirectoryBrowserOptions(
+        //    FileProvider = fileProvider,
+        //    RequestPath = requestPath
+        //));
 
         app.Run()
-
+        
         exitCode

@@ -8,6 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Models\User.fs" />
+    <Compile Include="MongoDBContext\MongoDbContext.fs" />
     <Compile Include="WeatherForecast.fs" />
     <Compile Include="Controllers\UserController.fs" />
     <Compile Include="Controllers/WeatherForecastController.fs" />
@@ -19,7 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="CouchbaseNetClient" Version="3.3.4" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
 </Project>
